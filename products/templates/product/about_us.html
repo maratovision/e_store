@@ -1,0 +1,12 @@
+<table>
+    <tr>
+        <td>Title</td>
+        <td>Description</td>
+    </tr>
+    {% for product in about %}
+    <tr>
+        <td>{{ product.title }}</td>
+        <td>{{ product.description }}</td>
+    </tr>
+    {% endfor %}
+</table>
