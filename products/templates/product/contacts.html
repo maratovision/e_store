@@ -1,0 +1,20 @@
+<table>
+    <tr>
+        <td>Name</td>
+        <td>Last_name</td>
+        <td>Email</td>
+        <td>Address</td>
+        <td>Latitude</td>
+        <td>Longtitude</td>
+    </tr>
+    {% for product in contacts %}
+    <tr>
+        <td>{{ product.name }}</td>
+        <td>{{ product.last_name }}</td>
+        <td>{{ product.email }}</td>
+        <td>{{ product.address }}</td>
+        <td>{{ product.latitude }}</td>
+        <td>{{ product.longtitude }}</td>
+    </tr>
+    {% endfor %}
+</table>

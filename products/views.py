@@ -36,3 +36,8 @@ def about_us(request):
     about = AboutUs.objects.all()
     context = {'about':about}
     return render(request, 'product/about_us.html', context)
+
+def contacts(request):
+    contacts = Contacts.objects.all()
+    context = {'contacts':contacts}
+    return render (request, 'product/contacts.html', context)
