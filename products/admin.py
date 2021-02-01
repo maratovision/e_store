@@ -18,5 +18,5 @@ class AboutUsAdmin(admin.ModelAdmin):
     list_display = ['title', 'description']
 
 class ContactsAdmin(admin.ModelAdmin):
-    list_display = ['name', 'last_name', 'email', 'address', 'latitude', 'longtitude']
+    list_display = ['name', 'last_name', 'email', 'address', 'latitude', 'longtitude', 'type']
 admin.site.register(Contacts, ContactsAdmin)

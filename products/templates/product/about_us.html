@@ -1,12 +1,21 @@
-<table>
+{% extends 'product/base.html' %}
+{% block content %}
+<table class="table">
+  <thead class="thead-light">
     <tr>
-        <td>Title</td>
-        <td>Description</td>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
     </tr>
-    {% for product in about %}
+  </thead>
+  <tbody>
+  {% for product in about %}
     <tr>
-        <td>{{ product.title }}</td>
-        <td>{{ product.description }}</td>
+      <th scope="row">{{product.id}}</th>
+      <td>{{ product.title }}</td>
+      <td>{{ product.description }}</td>
     </tr>
-    {% endfor %}
+  {% endfor %}
+  </tbody>
 </table>
+{% endblock %}

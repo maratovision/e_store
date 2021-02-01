@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 # Create your models here.
@@ -23,24 +24,31 @@ class Order(models.Model):
         ("Delivered", "Delivered"),
         ("Not Delivered", "Not Delivered")
     )
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     product = models.ForeignKey(Products, on_delete=models.SET_NULL, null=True)
     quantity = models.IntegerField(default=1)
     status = models.CharField(max_length=20, choices=statuses, default="In Process")
     date_created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.product
+        return f"{self.product} {self.quantity}"
 
 class AboutUs(models.Model):
     title = models.CharField(max_length=150)
     description = models.TextField()
 
 class Contacts(models.Model):
+    type_contact = (
+        ('Phone number', 'Phone number'),
+        ('Email', 'Email'),
+        ('Physical address', 'Physical address')
+    )
     name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=20)
     phone = models.IntegerField(max_length=20)
     email = models.EmailField()
     address = models.CharField(max_length=50)
+    type = models.CharField(max_length=20, choices=type_contact, default='Phone number')
     latitude = models.IntegerField(max_length=20, blank=True, null=True)
     longtitude = models.IntegerField(max_length=20, blank=True, null=True)
 

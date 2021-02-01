@@ -1,20 +1,32 @@
-<table>
+{% extends 'product/base.html' %}
+{% block content %}
+<table class="table table-striped">
+  <thead>
     <tr>
-        <td>Name</td>
-        <td>Last_name</td>
-        <td>Email</td>
-        <td>Address</td>
-        <td>Latitude</td>
-        <td>Longtitude</td>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last name</th>
+      <th scope="col">Address</th>
+      <th scope="col">Email</th>
+      <th scope="col">Type</th>
+      <th scope="col">Latitude</th>
+      <th scope="col">Longtitude</th>
+
     </tr>
-    {% for product in contacts %}
+  </thead>
+  <tbody>
+  {% for product in contacts %}
     <tr>
-        <td>{{ product.name }}</td>
-        <td>{{ product.last_name }}</td>
-        <td>{{ product.email }}</td>
-        <td>{{ product.address }}</td>
-        <td>{{ product.latitude }}</td>
-        <td>{{ product.longtitude }}</td>
+      <th scope="row">{{ product.id }}</th>
+      <td>{{ product.name }}</td>
+      <td>{{ product.last_name }}</td>
+      <td>{{ product.address }}</td>
+      <td>{{ product.email }}</td>
+      <td>{{ product.type }}</td>
+      <td>{{ product.latitude }}</td>
+      <td>{{ product.longtitude }}</td>
     </tr>
-    {% endfor %}
+  {% endfor %}
+  </tbody>
 </table>
+{% endblock %}
