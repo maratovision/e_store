@@ -1,8 +1,27 @@
 {% extends 'product/base.html' %}
 {% block content %}
-<form method="POST" action="">
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Acme Widgets&nbsp; - Get Your Widgets Here!</title>
+</head>
+
+<body bgcolor="#FFFFCC">
+<div class="container">
+    <h2>This is order page</h2>
+<h3>Confirm your order please!</h3>
+<p>Please make your selections from the following choices:</p>
+    <form method="POST" action="">
     {% csrf_token %}
     {{ form }}
     <input type="submit" name="Submit">
 </form>
+<p>If you have questions or difficulties with this order page, please contact
+our Customer Service Department (see our Contacts page.)</p>
+</div>
+</body>
+
+</html>
 {% endblock %}

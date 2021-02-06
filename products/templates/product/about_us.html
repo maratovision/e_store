@@ -1,21 +1,141 @@
 {% extends 'product/base.html' %}
 {% block content %}
-<table class="table">
-  <thead class="thead-light">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Title</th>
-      <th scope="col">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-  {% for product in about %}
-    <tr>
-      <th scope="row">{{product.id}}</th>
-      <td>{{ product.title }}</td>
-      <td>{{ product.description }}</td>
-    </tr>
-  {% endfor %}
-  </tbody>
-</table>
+<!--<table class="table">-->
+<!--  <thead class="thead-light">-->
+<!--    <tr>-->
+<!--      <th scope="col">#</th>-->
+<!--      <th scope="col">Title</th>-->
+<!--      <th scope="col">Description</th>-->
+<!--    </tr>-->
+<!--  </thead>-->
+<!--  <tbody>-->
+<!--  {% for product in about %}-->
+<!--    <tr>-->
+<!--      <th scope="row">{{product.id}}</th>-->
+<!--      <td>{{ product.title }}</td>-->
+<!--      <td>{{ product.description }}</td>-->
+<!--    </tr>-->
+<!--  {% endfor %}-->
+<!--  </tbody>-->
+<!--</table>-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Modern Business - Start Bootstrap Template</title>
+
+</head>
+
+<body>
+
+  <!-- Page Content -->
+  <div class="container">
+
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">About
+      <small>Our E-Store shop</small>
+    </h1>
+
+    <!-- Intro Content -->
+    <div class="row">
+      {% for product in about %}
+      <div class="col-lg-6">
+        <img class="img-fluid rounded mb-4" src="https://24gadget.ru/uploads/posts/2015-04/1429607367_apple-store.jpg" alt="">
+      </div>
+      <div class="col-lg-6">
+        <h2>{{ product.title }}</h2>
+        <p>{{ product.description }}.</p>
+      </div>
+      {% endfor %}
+    </div>
+    <!-- /.row -->
+
+    <!-- Team Members -->
+    <h2>Our Team</h2>
+
+    <div class="row">
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100 text-center">
+          <img class="card-img-top" src="http://wallup.net/wp-content/uploads/2016/03/09/71796-movies-Pirates_of_the_Caribbean_On_Stranger_Tides-Jack_Sparrow.jpg" alt="" width="100" height="220">
+          <div class="card-body">
+            <h4 class="card-title">Sparrow Jack</h4>
+            <h6 class="card-subtitle mb-2 text-muted">Captain</h6>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus aut mollitia eum ipsum fugiat odio officiis odit.</p>
+          </div>
+          <div class="card-footer">
+            <a href="#">name@example.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100 text-center">
+          <img class="card-img-top" src="https://api.time.com/wp-content/uploads/2017/02/john-wick-2-keanu-reeves1.jpg" alt="" width="100" height="220">
+          <div class="card-body">
+            <h4 class="card-title">John Wick</h4>
+            <h6 class="card-subtitle mb-2 text-muted">The best killer</h6>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus aut mollitia eum ipsum fugiat odio officiis odit.</p>
+          </div>
+          <div class="card-footer">
+            <a href="#">name@example.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100 text-center">
+          <img class="card-img-top" src="https://ftw.usatoday.com/wp-content/uploads/sites/90/2019/04/ad51644215b57ef0cfea49acab180dbff2da45b775f7e9c63d4cd3402c3ed867-e1555335664836.jpg?w=1000&h=600&crop=1" alt="" width="100" height="220">
+          <div class="card-body">
+            <h4 class="card-title">John Snow</h4>
+            <h6 class="card-subtitle mb-2 text-muted">The immortal man</h6>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus aut mollitia eum ipsum fugiat odio officiis odit.</p>
+          </div>
+          <div class="card-footer">
+            <a href="#">name@example.com</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.row -->
+
+    <!-- Our Customers -->
+    <h2>Our Customers</h2>
+    <div class="row">
+      <div class="col-lg-2 col-sm-4 mb-4">
+        <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+      </div>
+      <div class="col-lg-2 col-sm-4 mb-4">
+        <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+      </div>
+      <div class="col-lg-2 col-sm-4 mb-4">
+        <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+      </div>
+      <div class="col-lg-2 col-sm-4 mb-4">
+        <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+      </div>
+      <div class="col-lg-2 col-sm-4 mb-4">
+        <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+      </div>
+      <div class="col-lg-2 col-sm-4 mb-4">
+        <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+      </div>
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+
+</body>
+
+</html>
+
+
 {% endblock %}
+
+
+

@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+from datetime import date
 
 # Create your models here.
 
@@ -29,6 +30,7 @@ class Order(models.Model):
     quantity = models.IntegerField(default=1)
     status = models.CharField(max_length=20, choices=statuses, default="In Process")
     date_created = models.DateTimeField(auto_now_add=True)
+    price = models.IntegerField(max_length=20)
 
     def __str__(self):
         return f"{self.product} {self.quantity}"
@@ -51,6 +53,20 @@ class Contacts(models.Model):
     type = models.CharField(max_length=20, choices=type_contact, default='Phone number')
     latitude = models.IntegerField(max_length=20, blank=True, null=True)
     longtitude = models.IntegerField(max_length=20, blank=True, null=True)
+
+class Profile(models.Model):
+    genders = (
+        ('F', "F"),
+        ('M', "M")
+    )
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    image = models.ImageField(default='default_image.png', blank=True)
+    full_name = models.CharField(max_length=50)
+    gender = models.CharField(choices=genders, max_length=20)
+    description = models.TextField()
+    birth_date = models.DateField(default=date.today())
+    twitter_link = models.CharField(max_length=100)
+
 
 
 

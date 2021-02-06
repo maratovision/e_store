@@ -7,7 +7,7 @@ class ProductsAdmin(admin.ModelAdmin):
 admin.site.register(Products, ProductsAdmin)
 
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ["product", "quantity", "status", "date_created"]
+    list_display = ["product", "quantity", 'price', "status", "date_created"]
 admin.site.register(Order, OrderAdmin)
 
 class AboutUsAdmin(admin.ModelAdmin):
@@ -20,3 +20,7 @@ class AboutUsAdmin(admin.ModelAdmin):
 class ContactsAdmin(admin.ModelAdmin):
     list_display = ['name', 'last_name', 'email', 'address', 'latitude', 'longtitude', 'type']
 admin.site.register(Contacts, ContactsAdmin)
+
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = ['user','full_name', 'gender', 'birth_date', 'twitter_link']
+admin.site.register(Profile, ProfileAdmin)
