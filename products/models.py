@@ -15,6 +15,7 @@ class Products(models.Model):
     description = models.CharField(max_length=200)
     type = models.CharField(choices=type_of_products, max_length=20)
     price = models.IntegerField()
+    sale = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
@@ -30,7 +31,7 @@ class Order(models.Model):
     quantity = models.IntegerField(default=1)
     status = models.CharField(max_length=20, choices=statuses, default="In Process")
     date_created = models.DateTimeField(auto_now_add=True)
-    price = models.IntegerField(max_length=20)
+    payment_method = models.CharField(max_length=20)
 
     def __str__(self):
         return f"{self.product} {self.quantity}"
@@ -66,6 +67,7 @@ class Profile(models.Model):
     description = models.TextField()
     birth_date = models.DateField(default=date.today())
     twitter_link = models.CharField(max_length=100)
+    order_count = models.PositiveIntegerField(default=0)
 
 
 

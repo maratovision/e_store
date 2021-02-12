@@ -7,7 +7,7 @@ class ProductsAdmin(admin.ModelAdmin):
 admin.site.register(Products, ProductsAdmin)
 
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ["product", "quantity", 'price', "status", "date_created"]
+    list_display = ["product", "quantity", "status", "date_created"]
 admin.site.register(Order, OrderAdmin)
 
 class AboutUsAdmin(admin.ModelAdmin):
