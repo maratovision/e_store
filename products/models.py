@@ -4,6 +4,7 @@ from datetime import date
 
 # Create your models here.
 
+
 class Products(models.Model):
     type_of_products = (
         ("Laptop", "Laptop"),
@@ -20,25 +21,32 @@ class Products(models.Model):
     def __str__(self):
         return self.name
 
+
 class Order(models.Model):
     statuses = (
         ("In Process", "In Process"),
         ("Delivered", "Delivered"),
         ("Not Delivered", "Not Delivered")
     )
+    p_method = (
+        ('money', 'money'),
+        ('wallet', 'wallet')
+    )
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     product = models.ForeignKey(Products, on_delete=models.SET_NULL, null=True)
     quantity = models.IntegerField(default=1)
     status = models.CharField(max_length=20, choices=statuses, default="In Process")
     date_created = models.DateTimeField(auto_now_add=True)
-    payment_method = models.CharField(max_length=20)
+    payment_method = models.CharField(max_length=20, choices=p_method)
 
     def __str__(self):
         return f"{self.product} {self.quantity}"
 
+
 class AboutUs(models.Model):
     title = models.CharField(max_length=150)
     description = models.TextField()
+
 
 class Contacts(models.Model):
     type_contact = (
@@ -55,6 +63,7 @@ class Contacts(models.Model):
     latitude = models.IntegerField(max_length=20, blank=True, null=True)
     longtitude = models.IntegerField(max_length=20, blank=True, null=True)
 
+
 class Profile(models.Model):
     genders = (
         ('F', "F"),
@@ -68,7 +77,5 @@ class Profile(models.Model):
     birth_date = models.DateField(default=date.today())
     twitter_link = models.CharField(max_length=100)
     order_count = models.PositiveIntegerField(default=0)
-
-
-
-
+    wallet = models.PositiveIntegerField(default=0)
+    sale_amount = models.FloatField(default=0.1)

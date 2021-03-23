@@ -12,6 +12,8 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from .models import *
 from .forms import OrderForm, ProfileForm, SignupForm
 
+from .filters import ProductFilter
+
 
 # Create your views here.
 from .tokens import account_activation_token
@@ -19,7 +21,10 @@ from .tokens import account_activation_token
 
 def products_page(request):
     products = Products.objects.all() # SELECT * FROM PRODUCTS
-    return render(request, 'product/main.html', {"products":products})
+    filter = ProductFilter(request.GET, queryset=products)
+    products = filter.qs
+    return render(request, 'product/main.html', {"products":products, 'filter':filter})
+
 
 def order_page(request, product_id):
     try:
@@ -33,9 +38,18 @@ def order_page(request, product_id):
                 total_price = product.price * form.cleaned_data['quantity']
                 if product.sale:
                     total_price = total_price - total_price * 0.2
+                if form.cleaned_data['payment_method'] == 'wallet':
+                    if profile.wallet >= total_price:
+                        profile.wallet -= total_price
+                        profile.order_count += 1
+                        profile.save()
+                        return HttpResponse('Спасибо за покупку')
+                    else:
+                        return HttpResponse('Не хватает денег')
+                else:
+                    profile.order_count += 1
+                    profile.save()
                 form.save()
-                profile.order_count += 1
-                profile.save()
                 # return redirect('products')
         return render(request, 'product/order.html', {'form':form, 'total_price':total_price})
     except Products.DoesNotExist:
